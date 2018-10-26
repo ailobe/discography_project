@@ -2,7 +2,7 @@
 
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all.order('created_at DESC')
+    @artists = Artist.order("created_at DESC").paginate(page: params[:page])
 end
 
   def new
@@ -21,6 +21,11 @@ end
 
   def show
     @artist = Artist.find(params[:id])
+  end
+
+  def show_records
+    @artist = Artist.find(params[:artist_id])
+    @lps = @artist.lps
   end
 
   def update

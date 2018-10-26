@@ -1,41 +1,34 @@
-<% provide :title,  "Artists" %>
-
 <nav class="level is-mobile">
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">TOTAL ARTISTS</p>
+      <p class="heading">LP RECORDS FROM</p>
       <p class="title">
-        <%= @artists.count %>
+        <%= link_to @artist.name, @artist %>
       </p>
     </div>
   </div>
   <div class="level-item has-text-centered">
       <div>
-       <%= link_to "Create a new Artist", new_artist_path, class: "button is-outlined" %>
+       <%= link_to "Create a new LP", new_artist_lp_path, class: "button is-outlined" %>
       </div>
   </div>
 </nav>
 <div class="section">
   <div class="container">
-    <% @artists.each do |artist| %>
+    <% @lps.each do |lp| %>
     <div class="card">
       <div class="card-content">
         <div class="media">
           <div class="media-content">
             <p class="title is-4">
-              <%= link_to artist.name, artist  %>
+              <%= link_to lp.name, artist_lp_path(lp.artist_id, lp.id)  %>
             </p>
           </div>
         </div>
         <div class="content">
-          <%= artist.description %>
+          <%= lp.description %>
         </div>
-        <div>
-       <%= link_to "#{artist.lps.count} LPs", artist_lps_path(artist), class: "button is-light" %>
-        </div>
-      </div>
     </div>
     <% end %>
   </div>
 </div>
-<%= will_paginate %>

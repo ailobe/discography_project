@@ -13,4 +13,13 @@
  *= require_tree .
  *= require_self
  */
- @import "bulma";
+
+@import "bulma";
+
+ #dropdown-toggle {
+  display: none;
+}
+
+#dropdown-toggle:checked ~ #dropdown-menu {
+  display: block;
+}

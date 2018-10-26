@@ -1,23 +1,23 @@
-<section class="hero is-medium is-dark is-bold">
+<section class="hero is-dark">
   <div class="hero-body">
     <div class="container">
       <p class="title">
-        Discography project Task
-      </p>
-      <p class="subtitle">
-        <%= yield :title %>
+        <%= link_to 'Discography project Task', root_path %>
       </p>
     </div>
   </div>
   <div class="hero-foot">
-    <nav class="tabs">
+    <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
-          <li>
+          <li class= <%= not_current?(root_path, "is-active") %>>
+            <%= link_to "Home", root_path %>
+          </li>
+          <li class= <%= not_current?(artists_path, "is-active") %>>
             <%= link_to "Artists", artists_path, style: "font-weight:bold" %>
           </li>
-          <li>
-            <%= link_to "LPs", '#', style: "font-weight:bold" %>
+          <li class= <%= not_current?(lps_path, "is-active") %>>
+            <%= link_to "LPs", lps_path, style: "font-weight:bold" %>
           </li>
         </ul>
       </div>

@@ -1,0 +1,58 @@
+<% provide :title,  "LPs" %>
+
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">TOTAL LP's</p>
+      <p class="title">
+        <%= @lps.count %>
+      </p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+<div class="dropdown">
+  <input id="dropdown-toggle" type="checkbox" />
+
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <label for="dropdown-toggle">Filter by Artists</label>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <% @artists.each do |artist| %>
+      <div class="dropdown-content">
+        <%= link_to artist.name, artist_lps_path(artist.id), class: "dropdown-item" %>
+
+      </div>
+    <% end %>
+  </div>
+</div>
+  </div>
+</nav>
+
+<div class="section">
+  <div class="container">
+    <% @lps.each do |lp| %>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">
+              <%= link_to lp.name, artist_lp_path(lp.artist_id, lp.id) %>
+            </p>
+          </div>
+        </div>
+        <div class="content">
+          <%= lp.description %>
+        </div>
+        <div>
+        <%= link_to "#{Artist.find(lp.artist_id).name} profile", artist_lps_path(lp.artist_id), class: "button is-light" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

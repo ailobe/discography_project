@@ -1,0 +1,32 @@
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading">LP record</p>
+      <p class="title"><%= @lp.name %></p>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <%= link_to "Edit", edit_artist_lp_path(@lp), class: "button is-outlined" %>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+      <div>
+          <%= link_to "Delete", artist_lp_path(@lp), method: :delete,
+            data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
+      </div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <%= @lp.description %>
+    </div>
+  </div>
+  <br />
+  <div>
+    <%= link_to "LPs from
+      #{Artist.find(@lp.artist_id).name}", artist_lps_path(@lp.artist_id), class: "button is-light" %>
+  </div>
+</section>
