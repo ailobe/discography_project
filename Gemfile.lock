@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 7c3ebf904bbf0ad0246f79913d1e847e311188d4
+  branch: master
+  specs:
+    faker (1.9.1)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -209,6 +217,7 @@ DEPENDENCIES
   bulma-rails (~> 0.7.2)
   byebug
   coffee-rails (~> 4.2)
+  faker!
   guard
   guard-minitest
   jbuilder (~> 2.5)

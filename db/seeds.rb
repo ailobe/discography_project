@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+50.times do |n|
+  name  = Faker::RockBand.unique.name
+  description = Faker::Lorem.paragraph(4)
+  Artist.create!(name:  name,
+               description: description)
+end

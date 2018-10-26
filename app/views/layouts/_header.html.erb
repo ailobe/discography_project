@@ -1,22 +1,27 @@
-<section class="hero is-primary">
+<section class="hero is-medium is-dark is-bold">
   <div class="hero-body">
     <div class="container">
-      <h1 class="title">
+      <p class="title">
         Discography project Task
-      </h1>
-      <h2 class="subtitle">
+      </p>
+      <p class="subtitle">
         <%= yield :title %>
-      </h2>
+      </p>
     </div>
   </div>
   <div class="hero-foot">
     <nav class="tabs">
       <div class="container">
         <ul>
-          <li><%= link_to "Artists", '#' %></li>
-          <li><%= link_to "LPs", '#' %></li>
+          <li>
+            <%= link_to "Artists", artists_path, style: "font-weight:bold" %>
+          </li>
+          <li>
+            <%= link_to "LPs", '#', style: "font-weight:bold" %>
+          </li>
         </ul>
       </div>
     </nav>
   </div>
+</section>
 </section>

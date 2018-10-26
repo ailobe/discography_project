@@ -1,0 +1,23 @@
+<% provide :title,  "Artists" %>
+
+<div class="section">
+    <div class="container">
+        <% @artists.each do |artist| %>
+            <div class="card">
+          <div class="card-content">
+            <div class="media">
+              <div class="media-content">
+                <p class="title is-4"><%= link_to artist.name, artist  %></p>
+              </div>
+            </div>
+            <div class="content">
+                 <%= artist.description %>
+            </div>
+            <div class="LPS-count">
+                <span class="tag is-rounded"><%# .comments.count %> comments</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+    </div>
+</div>
