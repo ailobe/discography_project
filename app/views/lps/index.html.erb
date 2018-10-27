@@ -49,7 +49,7 @@
           <%= lp.description %>
         </div>
         <div>
-        <%= link_to "#{Artist.find(lp.artist_id).name} profile", artist_lps_path(lp.artist_id), class: "button is-light" %>
+        <%= link_to "LPs from #{Artist.find(lp.artist_id).name}", artist_lps_path(lp.artist_id), class: "button is-light" %>
         </div>
       </div>
     </div>
