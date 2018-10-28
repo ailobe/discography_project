@@ -1,5 +1,11 @@
 # Discography project Task
 
+## Description
+
+You have been asked to implement a simple website to manage the database of Musical records from a discography firm.
+
+For the complete instructions, check the pdf Discography project Task.
+
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:
