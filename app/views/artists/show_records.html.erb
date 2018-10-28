@@ -3,14 +3,14 @@
     <div>
       <p class="heading">LP RECORDS FROM</p>
       <p class="title">
-        <%= link_to @artist.name, @artist %>
+        <%= @artist.name %>
       </p>
     </div>
   </div>
   <div class="level-item has-text-centered">
-      <div>
-       <%= link_to "Create a new LP", new_artist_lp_path, class: "button is-outlined" %>
-      </div>
+    <div>
+      <%= link_to "Create a new LP", new_artist_lp_path, class: "button is-outlined" %>
+    </div>
   </div>
 </nav>
 <div class="section">
@@ -19,15 +19,19 @@
     <div class="card">
       <div class="card-content">
         <div class="media">
+          <div class="media-left">
+            <figure class="image is-96x96">
+              <img src="https://bulma.io/images/placeholders/96x96.png">
+            </figure>
+          </div>
           <div class="media-content">
             <p class="title is-4">
-              <%= link_to lp.name, artist_lp_path(lp.artist_id, lp.id)  %>
+              <%= link_to lp.name, artist_lp_path(lp.artist_id, lp.id), class: 'has-text-dark' %>
             </p>
+            <span class="tag"><%= "by #{Artist.find(lp.artist_id).name}" %></span>
           </div>
         </div>
-        <div class="content">
-          <%= lp.description %>
-        </div>
+      </div>
     </div>
     <% end %>
   </div>

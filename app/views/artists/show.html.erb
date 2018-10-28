@@ -1,5 +1,5 @@
-<% provide :title,  @artist.name %>
-
+<% @description =  @artist.description %>
+<%  %>
 <nav class="level is-mobile">
   <div class="level-item has-text-centered">
     <div>
@@ -13,22 +13,29 @@
     </div>
   </div>
   <div class="level-item has-text-centered">
-      <div>
-          <%= link_to "Delete", artist_path(@artist), method: :delete,
-            data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
-      </div>
-  </div>
-</nav>
-
-<section class="section">
-  <div class="container">
-    <div class="content">
-      <%= @artist.description %>
+    <div>
+      <%= link_to "Delete", artist_path(@artist), method: :delete,
+      data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
     </div>
   </div>
-  <br />
-  <div>
-    <%= link_to "#{@artist.lps.count} LPs from
-      this artist", artist_lps_path(@artist.id), class: "button is-light" %>
+</nav>
+<div class="section">
+  <div class="container">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-3by1">
+          <img src="https://bulma.io/images/placeholders/720x240.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <%= simple_format @artist.description %>
+        </div>
+        <div class="buttons has-addons">
+          <span class="button is-static"><%= "#{@artist.lps.count} LPs" %></span>
+          <%= link_to "Record List", artist_lps_path(@artist.id), class: "button is-outlined" %>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>

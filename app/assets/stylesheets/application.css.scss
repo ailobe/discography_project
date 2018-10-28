@@ -16,6 +16,25 @@
 
 @import "bulma";
 
+// Global
+html, body {
+    background-color: whitesmoke;
+}
+
+// Header
+.hero {
+  background-image: url(image1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.hero-foot {
+  font-weight: bold;
+}
+
+// Dropdown button
  #dropdown-toggle {
   display: none;
 }
@@ -23,3 +42,21 @@
 #dropdown-toggle:checked ~ #dropdown-menu {
   display: block;
 }
+
+// Navbar below header
+.level:not(:last-child) {
+  margin-bottom: 0;
+}
+
+// Footer
+.footer {
+  background-color: rgba(66, 39, 22, 0.9);
+  padding: 3rem;
+}
+
+// Pagination
+.pagination-link.is-current {
+  background-color: #7a7a7a;
+  border-color: grey;
+}
+

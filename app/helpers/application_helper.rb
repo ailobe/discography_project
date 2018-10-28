@@ -1,5 +1,7 @@
 module ApplicationHelper
-  def not_current?(path, style)
-    style unless !current_page?(path)
+  def current?(path, style)
+  unless !current_page?(path)
+    style
+  end
   end
 end

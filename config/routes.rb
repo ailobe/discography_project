@@ -5,5 +5,4 @@ Rails.application.routes.draw do
     get '/lps', to: 'artists#show_records', as: 'records'
   end
   get '/lps', to: 'lps#index'
-  post '/lps', to: 'lps#create'
 end

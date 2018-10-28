@@ -1,6 +1,7 @@
 class LpsController < ApplicationController
   def index
-    @lps = Lp.order("created_at DESC")
+    @lps = Lp.order(:name).paginate(page: params[:page],
+                                    per_page: 10)
     @artists = Artist.order(:name)
   end
 
@@ -12,7 +13,7 @@ class LpsController < ApplicationController
     @artist = Artist.find(params[:artist_id])
     @lp = @artist.lps.create(lp_params)
     if @lp.save
-      redirect_to @artist
+      redirect_to artist_lp_path(@artist.id, @lp.id)
     else
       render 'new'
     end
@@ -23,10 +24,9 @@ class LpsController < ApplicationController
   end
 
   def update
-    @artist = Artist.find(params[:artist_id])
-    @lp = @artist.lps.create(lp_params)
+    @lp = Lp.find(params[:id])
     if @lp.update(lp_params)
-      redirect_to artist_lp_path(@artist.id, @lp.id)
+      redirect_to artist_lp_path(@lp.artist_id, @lp.id)
     else
       render 'edit'
     end

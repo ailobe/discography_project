@@ -1,7 +1,7 @@
 <nav class="level is-mobile">
   <div class="level-item has-text-centered">
     <div>
-      <p class="heading">LP record</p>
+      <p class="heading">LP RECORD</p>
       <p class="title"><%= @lp.name %></p>
     </div>
   </div>
@@ -11,22 +11,29 @@
     </div>
   </div>
   <div class="level-item has-text-centered">
-      <div>
-          <%= link_to "Delete", artist_lp_path(@lp), method: :delete,
-            data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
-      </div>
-  </div>
-</nav>
-
-<section class="section">
-  <div class="container">
-    <div class="content">
-      <%= @lp.description %>
+    <div>
+      <%= link_to "Delete", artist_lp_path(@lp), method: :delete,
+      data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
     </div>
   </div>
-  <br />
-  <div>
-    <%= link_to "LPs from
-      #{Artist.find(@lp.artist_id).name}", artist_lps_path(@lp.artist_id), class: "button is-light" %>
+</nav>
+<div class="section">
+  <div class="container">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-3bys">
+          <img src="https://bulma.io/images/placeholders/720x240.png" alt="Placeholder image">
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="content">
+          <%= simple_format @lp.description %>
+        </div>
+        <div class="buttons has-addons">
+          <%= link_to "by #{Artist.find(@lp.artist_id).name}", artist_path(@lp.artist_id), class: "button is-outlined" %>
+          <%= link_to "Record List", artist_lps_path(@lp.artist_id), class: "button is-outlined" %>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
