@@ -21,7 +21,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get artist records page' do
-    get artist_records_path(@artist)
+    get artist_lps_path(@artist)
     assert_response :success
   end
 end
