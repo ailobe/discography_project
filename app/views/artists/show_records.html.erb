@@ -1,19 +1,7 @@
 <% @collection = @lps %>
-
-<nav class="level is-mobile">
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">LP RECORDS FROM</p>
-      <p class="title">
-        <%= @artist.name %>
-      </p>
-    </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <%= link_to "Create a new LP", new_artist_lp_path, class: "button is-outlined" %>
-    </div>
-  </div>
-</nav>
+<% provide :heading,  "LP RECORDS FROM" %>
+<% @title = @artist.name %>
+<% provide :link_text,  "New LP" %>
+<% @new_path = new_artist_lp_path %>
+<%= render 'shared/level' %>
 <%= render 'shared/index' %>
-

@@ -1,0 +1,50 @@
+<nav class="level is-mobile">
+  <div class="level-item has-text-centered">
+    <div>
+      <p class="heading"><%= yield :heading %></p>
+      <p class="title"><%= @title %></p>
+    </div>
+  </div>
+  <% if @object.present? %>
+  <div class="level-item has-text-centered">
+    <div>
+      <%= link_to "Edit", @edit_path, class: "button is-outlined" %>
+    </div>
+  </div>
+  <div class="level-item has-text-centered">
+    <div>
+      <%= link_to "Delete", @delete_path, method: :delete,
+      data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
+    </div>
+  </div>
+  <% elsif @collection.present? %>
+  <% if !current_page?(lps_path) %>
+  <div class="level-item has-text-centered">
+    <div>
+      <%= link_to yield(:link_text), @new_path, class: "button is-outlined" %>
+    </div>
+  </div>
+  <% else %>
+  <div class="level-item has-text-centered">
+    <div class="dropdown">
+      <input id="dropdown-toggle" type="checkbox" />
+      <div class="dropdown-trigger">
+        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <label for="dropdown-toggle">Filter by Artists</label>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+        </button>
+      </div>
+      <div class="dropdown-menu" id="dropdown-menu" role="menu">
+        <% @artists.each do |artist| %>
+        <div class="dropdown-content">
+          <%= link_to artist.name, artist_lps_path(artist.id), class: "dropdown-item" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+</nav>

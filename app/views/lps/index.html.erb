@@ -1,32 +1,5 @@
 <% @collection = @lps %>
-<nav class="level is-mobile">
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">TOTAL LP's</p>
-      <p class="title">
-        <%= @lps.count %>
-      </p>
-    </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div class="dropdown">
-      <input id="dropdown-toggle" type="checkbox" />
-      <div class="dropdown-trigger">
-        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
-        <label for="dropdown-toggle">Filter by Artists</label>
-        <span class="icon is-small">
-          <i class="fas fa-angle-down" aria-hidden="true"></i>
-        </span>
-        </button>
-      </div>
-      <div class="dropdown-menu" id="dropdown-menu" role="menu">
-        <% @artists.each do |artist| %>
-        <div class="dropdown-content">
-          <%= link_to artist.name, artist_lps_path(artist.id), class: "dropdown-item" %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</nav>
+<% provide :heading,  "TOTAL LPs" %>
+<% @title = @lps.count %>
+<%= render 'shared/level' %>
 <%= render 'shared/index' %>

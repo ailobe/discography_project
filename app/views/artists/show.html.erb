@@ -1,21 +1,7 @@
 <% @object =  @artist %>
-<nav class="level is-mobile">
-  <div class="level-item has-text-centered">
-    <div>
-      <p class="heading">Artist profile</p>
-      <p class="title"><%= @artist.name %></p>
-    </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <%= link_to "Edit", edit_artist_path(@artist), class: "button is-outlined" %>
-    </div>
-  </div>
-  <div class="level-item has-text-centered">
-    <div>
-      <%= link_to "Delete", artist_path(@artist), method: :delete,
-      data: { confirm: "Are you sure?" }, class: "button is-danger is-outlined" %>
-    </div>
-  </div>
-</nav>
+<% provide :heading,  "Artist profile" %>
+<% @title = @artist.name %>
+<% @edit_path = edit_artist_path(@artist) %>
+<% @delete_path = artist_path(@artist) %>
+<%= render 'shared/level' %>
 <%= render 'shared/show' %>
