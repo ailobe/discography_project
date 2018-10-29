@@ -1,3 +1,4 @@
+<% @collection = @lps %>
 <nav class="level is-mobile">
   <div class="level-item has-text-centered">
     <div>
@@ -28,27 +29,4 @@
     </div>
   </div>
 </nav>
-<div class="section">
-  <div class="container">
-    <% @lps.each do |lp| %>
-    <div class="card">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-96x96">
-              <img src="https://bulma.io/images/placeholders/96x96.png">
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="subtitle is-4">
-              <%= link_to lp.name, artist_lp_path(lp.artist_id, lp.id), class: 'has-text-dark' %>
-            </p>
-            <span class="tag"><%= "by #{Artist.find(lp.artist_id).name}" %></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-    <%= will_paginate @lps, renderer: BulmaPagination::Rails %>
-  </div>
-</div>
+<%= render 'shared/index' %>

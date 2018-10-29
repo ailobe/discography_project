@@ -1,2 +1,4 @@
-<% provide :button_text, "Edit this artist" %>
-<%= render 'form' %>
+<% @object = @artist %>
+<% @url = artist_path(params[:id]) %>
+<% provide :button_text,  "Edit this artist" %>
+<%= render 'shared/form' %>
