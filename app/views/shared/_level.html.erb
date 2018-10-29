@@ -48,3 +48,10 @@
   <% end %>
   <% end %>
 </nav>
+<% flash.each do |key, message| %>
+<article id='flash' class= "message is-primary">
+  <div class="message-body">
+    <%= message %>
+  </div>
+</article>
+<% end %>
