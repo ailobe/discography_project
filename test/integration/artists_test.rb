@@ -5,50 +5,56 @@ class ArtistsTest < ActionDispatch::IntegrationTest
     @artist = Artist.create!(name: 'Name', description: 'Description.')
   end
 
-  test 'profile display' do
-    get artist_path(@artist)
-    assert_template 'artists/show'
-    assert_select 'p.heading', text: 'Artist profile'
-    assert_select 'p.title', text: @artist.name
-    assert_match @artist.description, response.body
-    assert_match @artist.lps.count.to_s, response.body
-  end
-
-  test 'artist interface' do
-    get artists_path
-    # Invalid new artist submission
+  test 'Invalid new artist submission' do
+    get new_artist_path
     assert_no_difference 'Artist.count' do
       post artists_path, params: { artist: { name: '', description: '' } }
     end
-    # assert_not flash.empty?
-    # Valid new artist submission
-    name = 'Just'
-    description = 'Me, Myself and I'
+    assert_template 'artists/new'
+    assert_select 'article.message.is-danger'
+  end
+
+  test 'Valid new artist submission' do
+    get new_artist_path
     assert_difference 'Artist.count', 1 do
-      post artists_path, params: { artist: { name: name,
-                                            description: description } }
+      post artists_path, params: { artist: { name: 'Artist',
+                                             description: 'My bio' } }
     end
-    # assert_not flash.empty?
-    follow_redirect!
-    assert_match description, response.body
     artist = assigns(:artist)
-    # Unsuccesful edit
-    get edit_artist_path(artist)
-    assert_template 'artists/edit'
-    patch artist_path(artist), params: { artist: { name: '',
-                                                  description: '' } }
-    assert_template 'artists/edit'
-    #assert_select  "div.alert", 'The form contains 2 errors.'
-    # Succesful edit
-    patch artist_path(artist), params: { artist: { name: 'Different',
-                                                    description: 'Different' } }
-    #assert_not flash.empty?
     assert_redirected_to artist
     follow_redirect!
-    # Delete artist
-    assert_select 'a', text: 'Delete'
+    assert_template 'artists/show'
+    assert_match artist.name, response.body
+    assert_match artist.description, response.body
+    assert_match artist.lps.count.to_s, response.body
+  end
+
+  test 'Unsuccesful edit' do
+    get edit_artist_path(@artist)
+    patch artist_path(@artist), params: { artist: { name: '',
+                                                    description: '' } }
+    assert_template 'artists/edit'
+    assert_select 'article.message.is-danger'
+  end
+
+  test 'Succesful edit' do
+    get edit_artist_path(@artist)
+    patch artist_path(@artist), params: { artist: { name: 'Different',
+                                                    description: 'Different' } }
+    artist = assigns(:artist)
+    assert_redirected_to @artist
+    follow_redirect!
+    assert_match artist.name, response.body
+    assert_match artist.description, response.body
+  end
+
+  test 'Delete artist' do
+    get artist_path(@artist)
+    assert_select 'a[href=?]', artist_path(@artist), text: 'Delete'
     assert_difference 'Artist.count', -1 do
-      delete artist_path(artist)
+      delete artist_path(@artist)
     end
+    assert_not flash.empty?
+    assert_redirected_to artists_path
   end
 end

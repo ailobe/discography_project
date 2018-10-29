@@ -38,8 +38,10 @@ class LpsController < ApplicationController
 
   def destroy
     @lp = Lp.find(params[:id])
+    artist = @lp.artist_id
     @lp.destroy
-    redirect_to root_path
+    flash[:success] = 'The LP has been deleted'
+    redirect_to artist_lps_path(artist)
   end
 
   private
