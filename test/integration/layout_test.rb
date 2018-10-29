@@ -17,14 +17,14 @@ class LayoutTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", artist_path(@artist)
     get artist_path(@artist)
     assert_select "a[href=?]", edit_artist_path(@artist)
-    assert_select 'a', text: 'Delete'
+    assert_select 'a[href=?]', artist_path(@artist), text: 'Delete'
     assert_select "a[href=?]", artist_lps_path(@artist)
     get artist_lps_path(@artist)
     assert_select "a[href=?]", new_artist_lp_path(@artist)
     assert_select "a[href=?]", artist_lp_path(@artist, @lp)
     get artist_lp_path(@artist, @lp)
     assert_select "a[href=?]", edit_artist_lp_path(@artist, @lp)
-    assert_select 'a', text: 'Delete'
+    assert_select 'a[href=?]', artist_lp_path(@artist, @lp), text: 'Delete'
     get lps_path
     assert_select "a[href=?]", artist_lp_path(@artist, @lp)
     assert_select "a[href=?]", artist_lps_path(@artist)
