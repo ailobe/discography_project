@@ -4,7 +4,7 @@
 
 You have been asked to implement a simple website to manage the database of Musical records from a discography firm.
 
-For the complete instructions, check the pdf [Discography project Task](https://github.com/ailobe/discography_project/blob/master/Discography%20project%20Task.pdf).
+For the complete instructions, read the pdf [Discography project Task](https://github.com/ailobe/discography_project/blob/master/Discography%20project%20Task.pdf).
 
 ## Getting started
 
