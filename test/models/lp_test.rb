@@ -16,7 +16,7 @@ class LpTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @lp.name = 'a' * 51
+    @lp.name = 'a' * 71
     assert_not @lp.valid?
   end
 
@@ -26,7 +26,7 @@ class LpTest < ActiveSupport::TestCase
   end
 
   test 'description should not be too long' do
-    @lp.description = 'a' * 256
+    @lp.description = 'a' * 301
     assert_not @lp.valid?
   end
 end

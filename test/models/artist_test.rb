@@ -15,7 +15,7 @@ class ArtistTest < ActiveSupport::TestCase
   end
 
   test 'name should not be too long' do
-    @artist.name = 'a' * 51
+    @artist.name = 'a' * 71
     assert_not @artist.valid?
   end
 
@@ -25,7 +25,7 @@ class ArtistTest < ActiveSupport::TestCase
   end
 
   test 'description should not be too long' do
-    @artist.description = 'a' * 256
+    @artist.description = 'a' * 301
     assert_not @artist.valid?
   end
 
